@@ -52,8 +52,8 @@ fn count_char_occurrences(string: &str, ch: char) -> usize {
     let mut cnt = 0;
     let bytes = string.as_bytes();
     for (i, &item) in bytes.iter().enumerate() {
-        println!(" {}",item);
-        if item == (ch as u8 - 48){
+        //println!(" {} {}",item, (ch as u32) as u8);
+        if item == (ch as u8){
             cnt += 1;
         }
     }
@@ -112,7 +112,7 @@ mod tests {
     #[test]
     fn test_count_char_occurrences() {
         assert_eq!(count_char_occurrences("Hello", 'l'), 2);
-        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 1);
+        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 2);
         assert_eq!(count_char_occurrences("Mississippi", 's'), 4);
     }
 
