@@ -1,33 +1,49 @@
 // Exercise 1
-// Fix all errors 
-fn sum(x, y: i32) {
-    x + y;
+// Fix all errors
+fn sum(x: i32, y: i32) -> i32 {
+    x + y
 }
 
 //Exercise 2
 // Input: Provide an arbitrary value of n
 // Implement sum function: 1+2+3+..n
-// Output: Calculate sum 1 to n 
+// Output: Calculate sum 1 to n
 pub fn sum_one_to_n(n: u32) -> u32 {
     // your code for summing all digits from 1 to `n` (inclusive) should go
     // here (you can remove the sample return of `0`)
-    0
+    n * (n + 1) / 2
 }
 
 // Exercise 3
 // Input: list of arbitrary numbers
 // Problem: Calculate the average of a list of numbers
-// Output: Average Number 
+// Output: Average Number
 fn calculate_average(numbers: &[f64]) -> f64 {
-    todo!()
+    let mut result: f64 = 0.0;
+    let size_numbers = numbers.len();
+    if size_numbers == 0 {
+        return 0.0;
+    } else {
+        for i in numbers {
+            result = result + i;
+        }
+        println!("result ==== {}", result / (size_numbers as f64) as f64);
+        result / (size_numbers as f64)
+    }
 }
 
 // Exercise 4
 // Calculate the sum of all even numbers in a list
 fn sum_even_numbers(numbers: &[i32]) -> i32 {
-    todo!()
+    let mut resultEven = 0;
+    for i in numbers {
+        if i % 2 == 0 {
+            resultEven += i;
+        }
+    }
+    resultEven
+    // todo!()
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -37,8 +53,8 @@ mod tests {
     #[test]
     fn sum_should_work() {
         let (x, y) = (1, 2);
-        let s = sum(x, y);
-    
+        let s: i32 = sum(x, y);
+
         assert_eq!(s, 3);
     }
 
@@ -73,7 +89,6 @@ mod tests {
         let numbers = [2.5, 4.8, 6.3, 1.7, 3.9];
         let result = calculate_average(&numbers);
         assert_eq!(result, 3.84);
-
     }
 
     // Test for exercise 3
@@ -83,7 +98,6 @@ mod tests {
         let numbers = [];
         let result = calculate_average(&numbers);
         assert_eq!(result, 0.0);
-
     }
 
     // Test for exercise 4
